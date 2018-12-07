@@ -246,7 +246,7 @@ function drawNewCard(id, text, x, y, rot, colour, sticker, animationspeed) {
     var speed = Math.floor(Math.random() * 1000);
     if (typeof(animationspeed) != 'undefined') speed = animationspeed;
 
-    var startPosition = $("#create-card").position();
+    var startPosition = $("#create-card-blue").position();
 
     card.css('top', startPosition.top - card.height() * 0.5);
     card.css('left', startPosition.left - card.width() * 0.5);
@@ -676,6 +676,19 @@ function adjustCard(offsets, doSync) {
     });
 }
 
+function createCardFixColor(color) {
+    var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
+    uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
+    //alert(uniqueID);
+    createCard(
+        'card' + uniqueID,
+        '',
+        158, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+        rotation,
+        color
+        );
+}
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -691,21 +704,21 @@ $(function() {
 
     //setTimeout($.unblockUI, 2000);
 
+    $("#create-card-blue").click(function() {
+        createCardFixColor("blue");
+    });
 
-    $("#create-card")
-        .click(function() {
-            var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
-            uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
-            //alert(uniqueID);
-            createCard(
-                'card' + uniqueID,
-                '',
-                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
-                rotation,
-                randomCardColour());
-        });
+    $("#create-card-yellow").click(function() {
+        createCardFixColor("yellow");
+    });
 
+    $("#create-card-green").click(function() {
+        createCardFixColor("green");
+    });
 
+    $("#create-card-white").click(function() {
+        createCardFixColor("white");
+    });
 
     // Style changer
     $("#smallify").click(function() {
