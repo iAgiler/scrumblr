@@ -11,7 +11,7 @@ var argv = require('yargs')
         .argv;
 
 exports.server = {
-	port: argv.port || 8080,
+	port: argv.port || 8018,
 	baseurl: argv.baseurl || '/'
 };
 
