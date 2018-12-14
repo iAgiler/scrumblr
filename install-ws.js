@@ -1,6 +1,6 @@
 let Service = require('node-windows').Service;
 
-let scriptPath = require('path').join(__dirname, '../', 'server.js');
+let scriptPath = require('path').join(__dirname, 'server.js');
 console.log(scriptPath);
 
 let svc = new Service({
